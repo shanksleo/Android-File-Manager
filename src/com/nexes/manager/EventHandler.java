@@ -100,12 +100,13 @@ public class EventHandler implements OnClickListener {
 
 	
 	/**
-	 * Creates an EventHandler object. This object is used to communicate
+	 * Creates an EventHandler object. This object is used to（被用来做） communicate
 	 * most work from the Main activity to the FileManager class.
-	 * 创建EventHandler 对象，
+	 * 创建EventHandler 对象，这个类用来连接 MainActivity 和 FileManager。
      *
 	 * @param context	The context of the main activity e.g  Main
 	 * @param manager	The FileManager object that was instantiated from Main
+     *                  FileManager 在MainActivity实例化
 	 */
 	public EventHandler(Context context, final FileManager manager) {
 		mContext = context;
@@ -122,6 +123,7 @@ public class EventHandler implements OnClickListener {
 	 * @param context	The context of the main activity e.g  Main
 	 * @param manager	The FileManager object that was instantiated from Main
 	 * @param location	The first directory to display to the user
+     *                  设置显示的文件夹
 	 */
 	public EventHandler(Context context, final FileManager manager, String location) {
 		mContext = context;
@@ -450,7 +452,7 @@ public class EventHandler implements OnClickListener {
 	
 	/**
 	 * will return the data in the ArrayList that holds the dir contents. 
-	 * 
+	 * 会返回在dir路径下的 ArrayList 的数据
 	 * @param position	the indext of the arraylist holding the dir content
 	 * @return the data in the arraylist at position (position)
 	 */
@@ -862,6 +864,7 @@ public class EventHandler implements OnClickListener {
 
     	/**
     	 * background thread here
+         *
     	 */
     	@Override
 		protected ArrayList<String> doInBackground(String... params) {
@@ -918,7 +921,8 @@ public class EventHandler implements OnClickListener {
 		
     	/**
     	 * This is called when the background thread is finished. Like onPreExecute, anything
-    	 * here will be done on the EDT thread. 
+    	 * here will be done on the EDT thread.
+         * background线程完成后会调用onPostExecute
     	 */
     	@Override
 		protected void onPostExecute(final ArrayList<String> file) {			
