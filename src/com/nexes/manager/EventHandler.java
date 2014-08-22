@@ -45,28 +45,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * This class sits between the Main activity and the FileManager class. 
+ * This class sits between the Main activity and the FileManager class.
+ * 这个类位于主Activity和文件fileManager 之间
+ *
  * To keep the FileManager class modular, this class exists to handle 
  * UI events and communicate that information to the FileManger class
- * 
+ * 是FileManager作为一个模块，这个类的存在是为了处理UI 的事件，和传送消息给FileManager
+ *
  * This class is responsible for the buttons onClick method. If one needs
  * to change the functionality of the buttons found from the Main activity
  * or add button logic, this is the class that will need to be edited.
- * 
+ * 这个类 响应按钮点击事件，如果有人想要改变 按钮的功能和逻辑 ，需要编辑这个类的内容
+ *
  * This class is responsible for handling the information that is displayed
- * from the list view (the files and folder) with a a nested class TableRow.
+ * from the list view (the files and folder) with a a nested（嵌套的，内装的） class TableRow.
+ *EventHandler 可以响应（内嵌了TableRow类）ListView 上的内容（文件和文件夹）
+ *
  * The TableRow class is responsible for displaying which icon is shown for each
  * entry. For example a folder will display the folder icon, a Word doc will 
  * display a word icon and so on. If more icons are to be added, the TableRow 
  * class must be updated to display those changes. 
- * 
+ * TableRow   举个栗子，一个文件夹 会显示一个文件夹的图标，如果更多的图标被加入 TableRow 这个类必须更新文件对应的图标
+ *
  * @author Joe Berria
  */
 public class EventHandler implements OnClickListener {
 	/*
-	 * Unique types to control which file operation gets
-	 * performed in the background
+	 * Unique types to control which file operation（操作） gets
+	 * performed（执行，表演） in the background
 	 */
+    //不同的类型控制 哪个文件操作类型被 激活
     private static final int SEARCH_TYPE =		0x00;
 	private static final int COPY_TYPE =		0x01;
 	private static final int UNZIP_TYPE =		0x02;
@@ -94,7 +102,8 @@ public class EventHandler implements OnClickListener {
 	/**
 	 * Creates an EventHandler object. This object is used to communicate
 	 * most work from the Main activity to the FileManager class.
-	 * 
+	 * 创建EventHandler 对象，
+     *
 	 * @param context	The context of the main activity e.g  Main
 	 * @param manager	The FileManager object that was instantiated from Main
 	 */

@@ -20,6 +20,7 @@ package com.nexes.manager;
 
 import java.io.File;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -122,13 +123,13 @@ public final class Main extends ListActivity {
         setContentView(R.layout.main);
         
         /*read settings*/
-        mSettings = getSharedPreferences(PREFS_NAME, 0);
+        mSettings = getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
         boolean hide = mSettings.getBoolean(PREFS_HIDDEN, false);
         boolean thumb = mSettings.getBoolean(PREFS_THUMBNAIL, true);
         int space = mSettings.getInt(PREFS_STORAGE, View.VISIBLE);
         int color = mSettings.getInt(PREFS_COLOR, -1);
         int sort = mSettings.getInt(PREFS_SORT, 3);
-        
+        //获取文件管理器实例
         mFileMag = new FileManager();
         mFileMag.setShowHiddenFiles(hide);
         mFileMag.setSortType(sort);
@@ -137,9 +138,12 @@ public final class Main extends ListActivity {
         	mHandler = new EventHandler(Main.this, mFileMag, savedInstanceState.getString("location"));
         else
         	mHandler = new EventHandler(Main.this, mFileMag);
-        
+        //事件处理器
         mHandler.setTextColor(color);
+        //Thumbnails 缩略图
         mHandler.setShowThumbnails(thumb);
+
+        //内部类。 TableRow 继承了ArrayAdapter<String>
         mTable = mHandler.new TableRow();
         
         /*sets the ListAdapter for our ListActivity and
@@ -829,6 +833,7 @@ public final class Main extends ListActivity {
      * again, it will close the application. 
      * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
      */
+    //onKeyDown方法，该方法是接口KeyEvent.Callback中的抽象方法，所有的View全部实现了该接口并重写了该方法，该方法用来捕捉手机键盘被按下的事件。
     @Override
    public boolean onKeyDown(int keycode, KeyEvent event) {
     	String current = mFileMag.getCurrentDir();

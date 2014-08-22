@@ -73,6 +73,7 @@ public class FileManager {
 		mPathStack = new Stack<String>();
 		
 		mPathStack.push("/");
+
 		mPathStack.push(mPathStack.peek() + "sdcard");
 	}
 	
