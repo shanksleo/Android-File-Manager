@@ -39,10 +39,12 @@ import android.util.Log;
  * This class is completely modular, which is to say that it has
  * no reference to the any GUI activity. This class could be taken
  * and placed into in other java (not just Android) project and work.
+ * 这个类是完全单独的模块，和Main 类没有任何引用，FileManager 类拿走放到其他项目总也是能正常给你个做的
  * <br>
  * <br>
  * This class handles all file and folder operations on the system.
- * This class dictates how files and folders are copied/pasted, (un)zipped
+ * 这个类处理所有的文件和文件夹相关的操作
+ * This class dictates（命令） how files and folders are copied/pasted, (un)zipped
  * renamed and searched. The EventHandler class will generally call these
  * methods and have them performed in a background thread. Threading is not
  * done in this class.  
@@ -67,6 +69,7 @@ public class FileManager {
 	 * Constructs an object of the class
 	 * <br>
 	 * this class uses a stack to handle the navigation of directories.
+     * FileManager 使用stack（栈）来处理文件目录导航
 	 */
 	public FileManager() {
 		mDirContent = new ArrayList<String>();
@@ -79,6 +82,7 @@ public class FileManager {
 	
 	/**
 	 * This will return a string of the current directory path
+     * 返回当前路径
 	 * @return the current directory
 	 */
 	public String getCurrentDir() {
@@ -87,6 +91,7 @@ public class FileManager {
 	
 	/**
 	 * This will return a string of the current home path.
+     * 设置homepath
 	 * @return	the home directory
 	 */
 	public ArrayList<String> setHomeDir(String name) {
@@ -99,7 +104,7 @@ public class FileManager {
 	}
 	
 	/**
-	 * This will determine if hidden files and folders will be visible to the
+	 * This will determine（决定） if hidden files and folders will be visible to the
 	 * user.
 	 * @param choice	true if user is veiwing hidden files, false otherwise
 	 */

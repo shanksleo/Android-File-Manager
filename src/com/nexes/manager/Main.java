@@ -66,7 +66,7 @@ import android.util.Log;
  * is done via the EventHandler class. Also the SettingsMangager class to load
  * and save user settings.
  * Main类 依赖FileManager类 来处理所有的文件操作比如复制/黏贴 压缩/解压，大部分和FileManager类有关的操作都是通过EventHandler 类
- * SettingsManager类 用来载入设置 和保存设置
+ * SettingsManager类 用来载入设置 和保存 设置
  * <br>
  * <p>
  * The design objective with this class is to control only the look of the
@@ -203,11 +203,11 @@ public final class Main extends ListActivity {
         	
         }
     }
-
+    //在一个Activity进入不可见状态，被onStop之前，系统会调用onSavedInstanceState来保存状态
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		
+        //将内容保存到Bundle中，以便下次恢复Activity时读取
 		outState.putString("location", mFileMag.getCurrentDir());
 	}
 	
