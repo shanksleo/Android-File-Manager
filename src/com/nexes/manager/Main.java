@@ -51,17 +51,22 @@ import android.widget.Toast;
 import android.util.Log;
 
 /**
- * This is the main activity. The activity that is presented to the user
- * as the application launches. This class is, and expected not to be, instantiated.
+ * This is the main activity. The activity that is presented（提供） to the user
+ * as the application launches. This class is, and expected not to be, instantiated（实例化）.
  * <br>
  * <p>
- * This class handles creating the buttons and
- * text views. This class relies on the class EventHandler to handle all button
- * press logic and to control the data displayed on its ListView. This class
- * also relies on the FileManager class to handle all file operations such as
- * copy/paste zip/unzip etc. However most interaction with the FileManager class
+ * This class handles（操纵） creating the buttons and
+ * text views. This class relies（依赖） on the class EventHandler to handle all button
+ * press logic and to control the data displayed on its ListView.
+ * Main 类创建button 和textView ，
+ * EventHandler 为Main 类 提供了处理所有button 的按键逻辑，和ListView显示数据
+ *
+ * This class also relies on the FileManager class to handle all file operations such as
+ * copy/paste zip/unzip etc. However most interaction （相互作用） with the FileManager class
  * is done via the EventHandler class. Also the SettingsMangager class to load
- * and save user settings. 
+ * and save user settings.
+ * Main类 依赖FileManager类 来处理所有的文件操作比如复制/黏贴 压缩/解压，大部分和FileManager类有关的操作都是通过EventHandler 类
+ * SettingsManager类 用来载入设置 和保存设置
  * <br>
  * <p>
  * The design objective with this class is to control only the look of the
