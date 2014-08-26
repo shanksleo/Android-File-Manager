@@ -537,11 +537,13 @@ public class EventHandler implements OnClickListener {
 
 	
 	/**
-	 * A nested class to handle displaying a custom view in the ListView that
+	 * A nested（藏匿） class to handle displaying a custom view in the ListView that
 	 * is used in the Main activity. If any icons are to be added, they must
 	 * be implemented in the getView method. This class is instantiated once in Main
 	 * and has no reason to be instantiated again. 
-	 * 
+	 * TableRow作为一个内部类来显示一个自定义的ListView。
+     *
+     * TableRow 在Main类中实例化一次，而且没必要实例化第二次
 	 * @author Joe Berria
 	 */
     public class TableRow extends ArrayAdapter<String> {
@@ -551,7 +553,7 @@ public class EventHandler implements OnClickListener {
     	private String display_size;
     	private ArrayList<Integer> positions;
     	private LinearLayout hidden_layout;
-    	
+    	//内部类使用外部类方法。外部类名.this.方法名（）
     	public TableRow() {
     		super(mContext, R.layout.tablerow, mDataSource);    		
     	}
