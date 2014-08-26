@@ -53,19 +53,19 @@ import android.util.Log;
 /**
  * This is the main activity. The activity that is presented（提供） to the user
  * as the application launches. This class is, and expected not to be, instantiated（实例化）.
- * <br>
+ * <br> 最好不要实例化
  * <p>
  * This class handles（操纵） creating the buttons and
  * text views. This class relies（依赖） on the class EventHandler to handle all button
  * press logic and to control the data displayed on its ListView.
  * Main 类创建button 和textView ，
- * EventHandler 为Main 类 提供了处理所有button 的按键逻辑，和ListView显示数据
+ * EventHandler 为Main 类 提供了处理所有button 的按键逻辑，和ListView显示的数据
  *
  * This class also relies on the FileManager class to handle all file operations such as
  * copy/paste zip/unzip etc. However most interaction （相互作用） with the FileManager class
  * is done via the EventHandler class. Also the SettingsMangager class to load
  * and save user settings.
- * Main类 依赖FileManager类 来处理所有的文件操作比如复制/黏贴 压缩/解压，大部分和FileManager类有关的操作都是通过EventHandler 类
+ * Main类 依赖FileManager类 来处理所有的文件操作比如复制/黏贴 压缩/解压， 不过大部分和FileManager类有关的操作都是通过EventHandler 类
  * SettingsManager类 用来载入设置 和保存 设置
  * <br>
  * <p>
@@ -149,15 +149,19 @@ public final class Main extends ListActivity {
         mHandler.setShowThumbnails(thumb);
 
         //内部类。 TableRow 继承了ArrayAdapter<String>
+
         mTable = mHandler.new TableRow();
         
         /*sets the ListAdapter for our ListActivity and
          *gives our EventHandler class the same adapter
+         * 给Main 类的 ListActivity设置ListAdapter
+         * 给EventHandler设置同样的ListAdapter
          */
         mHandler.setListAdapter(mTable);
         setListAdapter(mTable);
         
         /* register context menu for our list view */
+        //给List view 注册对应的菜单
         registerForContextMenu(getListView());
         
         mStorageLabel = (TextView)findViewById(R.id.storage_label);
@@ -170,7 +174,7 @@ public final class Main extends ListActivity {
         
         mHandler.setUpdateLabels(mPathLabel, mDetailLabel);
         
-        /* setup buttons */
+        /* setup（设置） buttons */
         int[] img_button_id = {R.id.help_button, R.id.home_button, 
         					   R.id.back_button, R.id.info_button, 
         					   R.id.manage_button, R.id.multiselect_button};
@@ -214,17 +218,19 @@ public final class Main extends ListActivity {
 	/*(non Java-Doc)
 	 * Returns the file that was selected to the intent that
 	 * called this activity. usually from the caller is another application.
+	 * 返回选中的文件
 	 */
 	private void returnIntentResults(File data) {
 		mReturnIntent = false;
 		
 		Intent ret = new Intent();
 		ret.setData(Uri.fromFile(data));
+        //调用setResult来设置结果，然后返回调用它的
 		setResult(RESULT_OK, ret);
 		
 		finish();
 	}
-	
+	//修改文件路径标签
 	private void updateStorageLabel() {
 		long total, aval;
 		int kb = 1024;
@@ -241,11 +247,12 @@ public final class Main extends ListActivity {
 	}
 	
 	/**
-	 *  To add more functionality and let the user interact with more
+	 *  To add more functionality and let the user interact（相互影响） with more
 	 *  file types, this is the function to add the ability. 
 	 *  
 	 *  (note): this method can be done more efficiently 
 	 */
+    //设置onListItemClick  响应事件
     @Override
     public void onListItemClick(ListView parent, View view, int position, long id) {
     	final String item = mHandler.getData(position);
@@ -254,6 +261,7 @@ public final class Main extends ListActivity {
     	String item_ext = null;
     	
     	try {
+            //获取文件的格式
     		item_ext = item.substring(item.lastIndexOf("."), item.length());
     		
     	} catch(IndexOutOfBoundsException e) {	
@@ -262,9 +270,11 @@ public final class Main extends ListActivity {
     	
     	/*
     	 * If the user has multi-select on, we just need to record the file
+    	 * 如果用户多选了，只需要记录选了什么
     	 * not make an intent for it.
     	 */
     	if(multiSelect) {
+            //多选了，调用对应方法进行处理
     		mTable.addMultiPosition(position, file.getPath());
     		
     	} else {
