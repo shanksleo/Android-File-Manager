@@ -27,7 +27,7 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.io.File;
-
+//缩略图
 public class ThumbnailCreator extends Thread {	
 	private int mWidth;
 	private int mHeight;

@@ -807,6 +807,7 @@ public class EventHandler implements OnClickListener {
      * Handlers and messages to perform background operations. 
      * 
      * @author Joe Berria
+     * AsyncTask 将耗时的操作一道后台线程，并在操作完成后同步更新UI线程
      */
     private class BackgroundWork extends AsyncTask<String, Void, ArrayList<String>> {
     	private String file_name;
@@ -821,6 +822,7 @@ public class EventHandler implements OnClickListener {
     	/**
     	 * This is done on the EDT thread. this is called before 
     	 * doInBackground is called
+         * 这个方法在doInbackgroud 前调用
     	 */
     	@Override
     	protected void onPreExecute() {
