@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Open Manager</string>
+    <string name="app_name">Final File Manager</string>
     <string name="media_dialog">Media preview</string>
     <string name="dir_info">Folder Information</string>
     <string name="manager_act">Phone Management</string>
+    <string name="phone_dir">盒子内置存储</string>
+    <string name="sd_dir">外接USB存储</string>
 </resources>

@@ -31,8 +31,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class HelpManager extends Activity implements OnClickListener {
-	private static final String[] EMAIL = {"nexesdevelopment@gmail.com"};
-	private static final String WEB = "http://nexesdevelopment.webs.com";
+	private static final String[] EMAIL = {"donottellyou@gmail.com"};
+	private static final String WEB = "http://www.zjedusoft.com/";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,7 @@ public class HelpManager extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.help_layout);
 		
-		String text = "Open Manager: If you have any questions or "
-						+"comments, please email the developer or visit "
-						+"the Open Manager web page.\n\nThank you\n\n";
+		String text = "久远文件管理器: 如果你对这软件有任何疑问，请联系我们.\n\n久远软件\n\n";
 		
 		TextView label = (TextView)findViewById(R.id.help_top_label);
 		label.setText(text);

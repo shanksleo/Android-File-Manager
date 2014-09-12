@@ -373,6 +373,8 @@ public class FileManager {
 	 * @param path
 	 * @param name
 	 * @return
+     *
+     * This method returns the character located at the String's specified index. The string indexes start from zero.
 	 */
 	public int createDir(String path, String name) {
 		int len = path.length();

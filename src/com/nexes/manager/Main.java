@@ -175,7 +175,7 @@ public final class Main extends ListActivity {
         mHandler.setUpdateLabels(mPathLabel, mDetailLabel);
         
         /* setup（设置） buttons */
-        int[] img_button_id = {R.id.help_button, R.id.home_button, 
+        int[] img_button_id = {R.id .help_button, R.id.home_button,
         					   R.id.back_button, R.id.info_button, 
         					   R.id.manage_button, R.id.multiselect_button};
         
