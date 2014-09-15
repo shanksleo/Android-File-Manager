@@ -127,7 +127,7 @@ public class EventHandler implements OnClickListener {
 	 */
 	public EventHandler(Context context, final FileManager manager, String location) {
 		mContext = context;
-		mFileMang = manager;
+	 	mFileMang = manager;
 		
 		mDataSource = new ArrayList<String>(mFileMang.getNextDir(location, true));
 	}

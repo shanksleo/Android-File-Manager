@@ -263,7 +263,7 @@ public final class Main extends ListActivity {
     	try {
             //获取文件的格式
     		item_ext = item.substring(item.lastIndexOf("."), item.length());
-    		Toast.makeText(this,"you touch it ",Toast.LENGTH_LONG).show();
+
     	} catch(IndexOutOfBoundsException e) {	
     		item_ext = ""; 
     	}
