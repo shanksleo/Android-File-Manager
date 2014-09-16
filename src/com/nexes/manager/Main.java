@@ -182,11 +182,11 @@ public final class Main extends ListActivity {
         int[] button_id = {R.id.hidden_copy, R.id.hidden_attach,
         				   R.id.hidden_delete, R.id.hidden_move};
         
-        ImageButton[] bimg = new ImageButton[img_button_id.length];
+        Button[] bimg = new Button[img_button_id.length];
         Button[] bt = new Button[button_id.length];
         
         for(int i = 0; i < img_button_id.length; i++) {
-        	bimg[i] = (ImageButton)findViewById(img_button_id[i]);
+        	bimg[i] = (Button)findViewById(img_button_id[i]);
         	bimg[i].setOnClickListener(mHandler);
 
         	if(i < 4) {

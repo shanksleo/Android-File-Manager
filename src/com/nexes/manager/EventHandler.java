@@ -608,11 +608,11 @@ public class EventHandler implements OnClickListener {
     		String per = "-";
     	    		
     		if(file.isDirectory())
-    			per += "d";
+    			per += "";
     		if(file.canRead())
-    			per += "r";
+    			per += "可读";
     		if(file.canWrite())
-    			per += "w";
+    			per += "-可写";
     		
     		return per;
     	}
@@ -752,7 +752,7 @@ public class EventHandler implements OnClickListener {
     			}
     			
     		} else if (file != null && file.isDirectory()) {
-    			if (file.canRead() && file.list().length > 0)
+    			if (file.canRead() &&  file.list() !=null && file.list().length > 0)
     				mViewHolder.icon.setImageResource(R.drawable.folder_full);
     			else
     				mViewHolder.icon.setImageResource(R.drawable.folder);
