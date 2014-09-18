@@ -312,7 +312,7 @@ public class EventHandler implements OnClickListener {
 				if (mFileMang.getCurrentDir() != "/") {
 					if(multi_select_flag) {
 						mDelegate.killMultiSelect(true);
-						Toast.makeText(mContext, "Multi-select is now off", 
+						Toast.makeText(mContext, "多选-取消",
 									   Toast.LENGTH_SHORT).show();
 					}
 					
@@ -326,12 +326,14 @@ public class EventHandler implements OnClickListener {
 			case R.id.home_button:		
 				if(multi_select_flag) {
 					mDelegate.killMultiSelect(true);
-					Toast.makeText(mContext, "Multi-select is now off", 
+					Toast.makeText(mContext, "多选-取消",
 								   Toast.LENGTH_SHORT).show();
 				}
 				
 				stopThumbnailThread();
 				updateDirectory(mFileMang.setHomeDir("/sdcard"));
+                Toast.makeText(mContext, "机身存储（路劲以后再改）",
+                        Toast.LENGTH_SHORT).show();
 				if(mPathLabel != null)
 					mPathLabel.setText(mFileMang.getCurrentDir());
 				break;
@@ -348,18 +350,33 @@ public class EventHandler implements OnClickListener {
 				break;
 				
 			case R.id.manage_button:
-				display_dialog(MANAGE_DIALOG);
+                if(multi_select_flag) {
+                    mDelegate.killMultiSelect(true);
+                    Toast.makeText(mContext, "多选-取消",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                stopThumbnailThread();
+                updateDirectory(mFileMang.setHomeDir("/storage"));
+                Toast.makeText(mContext, "usb存储（路径等确定后修改）",
+                        Toast.LENGTH_SHORT).show();
+                if(mPathLabel != null)
+                    mPathLabel.setText(mFileMang.getCurrentDir());
 				break;
-				
-			case R.id.multiselect_button:			
+			//当你按下多选按钮
+			case R.id.multiselect_button:
+                //如果多选按钮已经被选中
 				if(multi_select_flag) {
+                    //  mDelegate 是TableRow的实例
 					mDelegate.killMultiSelect(true);				
 					
 				} else {
+                    //多选按钮隐藏事件 显示
 					LinearLayout hidden_lay = 
 						(LinearLayout)((Activity) mContext).findViewById(R.id.hidden_buttons);
-					
+					//激活多选设置
 					multi_select_flag = true;
+                    //显示可以访问
 					hidden_lay.setVisibility(LinearLayout.VISIBLE);
 				}
 				break;
@@ -396,6 +413,7 @@ public class EventHandler implements OnClickListener {
 				break;
 				
 			case R.id.hidden_move:
+
 			case R.id.hidden_copy:
 				/* check if user selected objects before going further */
 				if(mMultiSelectData == null || mMultiSelectData.isEmpty()) {
@@ -406,8 +424,8 @@ public class EventHandler implements OnClickListener {
 				if(v.getId() == R.id.hidden_move)
 					delete_after_copy = true;
 					
-				mInfoLabel.setText("Holding " + mMultiSelectData.size() + 
-								   " file(s)");
+				mInfoLabel.setText("操作 " + mMultiSelectData.size() +
+								   " 个文件");
 				
 				mDelegate.killMultiSelect(false);
 				break;

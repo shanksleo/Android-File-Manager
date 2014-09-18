@@ -180,25 +180,25 @@
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:layout_weight="1"
-    		android:text="Attach"/>
+    		android:text="发送"/>
     	<Button
     		android:id="@+id/hidden_delete"
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:layout_weight="1"
-      		android:text="Delete"/>
+      		android:text="删除"/>
     	<Button
     		android:id="@+id/hidden_copy"
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:layout_weight="1"
-    		android:text="Copy"/>
+    		android:text="复制"/>
     	<Button
     		android:id="@+id/hidden_move"
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:layout_weight="1"
-    		android:text="Move" />
+    		android:text="移动" />
     </LinearLayout>		
 </LinearLayout>
 
