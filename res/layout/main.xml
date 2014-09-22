@@ -134,6 +134,22 @@
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 />
+            <Button
+                android:id="@+id/paste_button"
+
+                android:text="黏贴"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+
+                android:layout_width="140sp"
+                android:layout_height="60sp"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+
+                />
 
 
 

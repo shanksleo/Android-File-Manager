@@ -348,6 +348,12 @@ public class EventHandler implements OnClickListener {
 				Intent help = new Intent(mContext, HelpManager.class);
 				mContext.startActivity(help);
 				break;
+
+            case R.id.paste_button:
+                copyFileMultiSelect(mFileMang.getCurrentDir());
+                Toast.makeText(mContext,"复制中",Toast.LENGTH_SHORT).show();
+
+                break;
 				
 			case R.id.manage_button:
                 if(multi_select_flag) {
@@ -416,6 +422,7 @@ public class EventHandler implements OnClickListener {
 
 			case R.id.hidden_copy:
 				/* check if user selected objects before going further */
+                //检查是否有数据选中
 				if(mMultiSelectData == null || mMultiSelectData.isEmpty()) {
 					mDelegate.killMultiSelect(true);
 					break;
@@ -436,7 +443,7 @@ public class EventHandler implements OnClickListener {
 					mDelegate.killMultiSelect(true);
 					break;
 				}
-
+                //创建一个和选中文件个数一样长的数组
 				final String[] data = new String[mMultiSelectData.size()];
 				int at = 0;
 				
@@ -444,18 +451,18 @@ public class EventHandler implements OnClickListener {
 					data[at++] = string;
 				
 				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-				builder.setMessage("Are you sure you want to delete " +
-								    data.length + " files? This cannot be " +
-								    "undone.");
+				builder.setMessage("你确定要删除这 " +
+								    data.length + " 个文件? 注:删除后无法找回 "
+								    );
 				builder.setCancelable(false);
-				builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+				builder.setPositiveButton("删除", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						new BackgroundWork(DELETE_TYPE).execute(data);
 						mDelegate.killMultiSelect(true);
 					}
 				});
-				builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						mDelegate.killMultiSelect(true);
@@ -994,7 +1001,7 @@ public class EventHandler implements OnClickListener {
 											Toast.LENGTH_SHORT).show();
 					else
 						Toast.makeText(mContext, "Copy pasted failed", Toast.LENGTH_SHORT).show();
-					
+                    updateDirectory(mFileMang.getNextDir(mFileMang.getCurrentDir(), true));
 					pr_dialog.dismiss();
 					mInfoLabel.setText("");
 					break;

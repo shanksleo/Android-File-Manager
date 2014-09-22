@@ -177,7 +177,9 @@ public final class Main extends ListActivity {
         /* setup（设置） buttons */
         int[] img_button_id = {R.id .help_button, R.id.home_button,
         					   R.id.back_button, R.id.info_button, 
-        					   R.id.manage_button, R.id.multiselect_button};
+        					   R.id.manage_button, R.id.multiselect_button,
+                                R.id.paste_button
+                                };
         
         int[] button_id = {R.id.hidden_copy, R.id.hidden_attach,
         				   R.id.hidden_delete, R.id.hidden_move};
