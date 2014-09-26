@@ -232,7 +232,7 @@ public final class Main extends ListActivity {
 		
 		finish();
 	}
-	//修改文件路径标签
+	//修改存储空间
 	private void updateStorageLabel() {
 		long total, aval;
 		int kb = 1024;

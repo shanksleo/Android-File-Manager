@@ -893,7 +893,7 @@ public class EventHandler implements OnClickListener {
 
     	/**
     	 * background thread here
-         *
+         * 这个方法中的所有代码都会在子线程中运行
     	 */
     	@Override
 		protected ArrayList<String> doInBackground(String... params) {
